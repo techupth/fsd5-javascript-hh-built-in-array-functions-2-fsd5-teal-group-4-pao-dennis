@@ -374,4 +374,26 @@ const bills = [
 ];
 
 // Start coding here
-const totalMembers;
+const filterNullMember = bills.filter((bill) => bill.member !== null);
+
+// const uniqueArray = filterNullMember.filter(unique);
+
+// function unique(obj, index, array) {
+//   const foundIndex = array.findIndex(
+//     (array) => array.member.name === obj.member.name
+//   );
+//   return foundIndex === index;
+// }
+// const totalMembers = uniqueArray.length;
+// console.log(totalMembers)
+
+const totalMembers = filterNullMember.reduce(unique, []).length;
+
+function unique(acc, cur) {
+  const name = cur.member.name;
+  if (!acc.includes(name)) {
+    acc.splice(acc.length, 0, name);
+  }
+  return acc;
+}
+console.log(totalMembers);
