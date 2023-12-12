@@ -374,4 +374,25 @@ const bills = [
 ];
 
 // Start coding here
-const totalMembers;
+const totalMembers = bills.filter((customerBill)=>customerBill.member!==null)
+.map((customerBill)=>customerBill.member.name)
+.filter((customerName, index, arr)=>arr.indexOf(customerName) === index)
+.length;
+
+console.log(totalMembers);
+
+/*const totalMembers = bills.filter((customerBill)=>customerBill.member!==null).reduce((acc,cur)=>{
+  if(!(acc.includes(cur.member.name))){
+    acc.push(cur.member.name)
+  }
+  return acc;
+},[]).length;
+
+console.log(totalMembers)*/
+
+/*const totalMembers = bills.filter((customerBill)=>customerBill.member!==null).reduce((acc,cur)=>{
+  acc[cur.member.name] = "isMember";
+  return acc;
+},{});
+
+console.log(Object.keys(totalMembers).length);*/
